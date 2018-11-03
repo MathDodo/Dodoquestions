@@ -1,9 +1,11 @@
-<p>Hello from bar component.</p>
+<button (click)="AskQuestion()" class="btn btn-primary">AskQuestion</button>
 
-<p>You are currently viewing id {{GetId()}}.</p>
+<p *ngFor="let item of GetQuestions(); let i = index;">
+        <button (click)="LookUpQuestion(i)" class="btn btn-sm">{{item.question}}</button>
+</p>
 
-<p>{{GetData().text}}</p>
+<p>Bookmarked questions</p>
+<p *ngFor="let item of GetBookmarkedQuestions(); let i = index;">
+        <button (click)="LookUpBookmarkedQuestion(i)" class="btn btn-sm">{{item.question}}</button>
+</p>
 
-<p>{{GetData().details}}</p>
-
-<p>Do you <a routerLink="/example">want to go back?</a></p>

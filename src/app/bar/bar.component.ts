@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, Route } from "@angular/router";
 import {DataService} from "../data.service";
+import { Url } from 'url';
+import { QpagetemplateComponent } from '../qpagetemplate/qpagetemplate.component';
+import { FooComponent } from '../foo/foo.component';
+import { AskquestionComponent } from '../askquestion/askquestion.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @Component({
   selector: 'app-bar',
@@ -8,23 +13,34 @@ import {DataService} from "../data.service";
   styleUrls: ['./bar.component.css']
 })
 export class BarComponent implements OnInit {
-  private theId : number;
 
+  test = ["Hello", "Who knows"];
   constructor(
     private route : ActivatedRoute,
     private router : Router,
-    private service : DataService) { }
+    private service : DataService,) { 
+    }
 
   ngOnInit() {
-    this.theId = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
-  GetId() : number {
-    return this.theId;
+AskQuestion(){
+  this.router.navigateByUrl("/ask");
+}
+
+  GetQuestions(){
+    return this.service.GetData();
   }
 
-  GetData() : any {
-    return this.service.data.find(d => d.id == this.theId);
+  LookUpQuestion(index: number){
+    this.router.navigateByUrl("/questions/" + this.service.GetData()[index].path);
   }
 
+  LookUpBookmarkedQuestion(index: number){
+    this.router.navigateByUrl("/questions/" + this.service.GetBookmarkedData()[index].path);
+  }
+
+  GetBookmarkedQuestions(){
+    return this.service.GetBookmarkedData();
+  }
 }

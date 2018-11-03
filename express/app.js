@@ -22,26 +22,19 @@ app.use((req, res, next) => {
 
 /**** Mock data ****/
 let data = [
-  {id : 1, text : "This is some text 1", details : "Some more details 1"},
-  {id : 2, text : "This is some text 2", details : "Some more details 2"},
-  {id : 3, text : "This is some text 3", details : "Some more details 3"},
 ];
 
 /**** Routes ****/
 app.get('/api/my_data', (req, res) => res.json(data));
 
 app.post('/api/my_data', (req, res) => {
-    let text = req.body.text;
-    let details = req.body.details;
-    let nextId = data.reduce((acc, curr) => curr.id > acc.id ? curr : acc).id + 1;
-    let newData = {
-      id : nextId,
-      text : text,
-      details : details
-    };
-    data.push(newData);
-    res.json(newData);
+  data = req.body;
 });
+
+app.delete('/api/my_data', (req, res) => {
+  data = [];
+}
+  );
 
 /**** Reroute all unknown requests to angular index.html ****/
 app.get('/*', (req, res, next) => {

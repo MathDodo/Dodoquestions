@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes} from "@angular/router";
 import { FooComponent } from "./foo/foo.component";
 import { BarComponent } from "./bar/bar.component";
+import { AskquestionComponent } from './askquestion/askquestion.component';
+import { QpagetemplateComponent } from './qpagetemplate/qpagetemplate.component';
 
 const appRoutes : Routes = [
-  { path: "example", component : FooComponent},
-  { path: "example_with_id/:id", component : BarComponent},
-  { path: "**", redirectTo: "example"}
+  {path: '', component : BarComponent},
+  {path: 'ask', component: AskquestionComponent},
+  {path: 'questions/:q', component: QpagetemplateComponent},
+  {path: "**", component : FooComponent},
 ];
 
 @NgModule({

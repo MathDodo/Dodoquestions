@@ -1,0 +1,11 @@
+<p>The question is:<br>{{question.question}}</p>
+<p>Answers:</p>
+<p *ngFor="let item of GetAnswers(); let i = index;">
+    {{item.answer}} Votes: {{item.vote}} <button (click)="Vote(i)" class="btn btn-primary">+</button>
+</p>
+
+New answer:<br>
+  <input type="text" [(ngModel)]="data">
+
+<button (click)="PostAnswer()" class="btn btn-primary">Post</button>
+<button (click)="Bookmark()" class="btn btn-primary">Bookmark</button>

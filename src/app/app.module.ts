@@ -7,12 +7,16 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { FooComponent } from './foo/foo.component';
 import { BarComponent } from './bar/bar.component';
+import { QpagetemplateComponent } from './qpagetemplate/qpagetemplate.component';
+import { AskquestionComponent } from './askquestion/askquestion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooComponent,
-    BarComponent
+    BarComponent,
+    QpagetemplateComponent,
+    AskquestionComponent
   ],
   imports: [
     BrowserModule,
